@@ -73,13 +73,13 @@ echo GridView::widget([
         'pagination' => [
             'pageSize' => 10,
         ],
-        'sort' => ['attributes' => ['id','name', 'birth_date', 'created_at']]
+        'sort' => ['attributes' => ['id','name', 'sex', 'birth_date', 'created_at']]
     ]),
     'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => ''],
     'columns' => [
         'id',
-        'name',
-        'sex',
+        ['attribute' => 'name', 'label' => 'Имя'],
+        ['attribute' => 'sex', 'label' => 'Пол'],
         'birth_date:date',
         'created_at:date',
         [

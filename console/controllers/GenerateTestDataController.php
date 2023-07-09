@@ -67,7 +67,7 @@ class GenerateTestDataController extends Controller
             for ($i = 0; $i < 30; $i++) {
                 shuffle($clubIds);
 
-                $client = $clients[] = [
+                $clients[] = [
                     'name' => $faker->name,
                     'sex' => $faker->randomElement(['М', 'Ж']),
                     'birth_date' => $faker->date(),
