@@ -15,7 +15,7 @@ class Model extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'created_at' => 'Время создания'
+            'created_at' => 'Дата создания'
         ];
     }
 

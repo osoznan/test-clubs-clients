@@ -58,7 +58,10 @@ echo GridView::widget([
             }
         ],
         'address',
-        'created_at:date',
+        [
+            'attribute' => 'created_at',
+            'format' => ['datetime', 'php:Y-m-d H:i:s']
+        ],
         [
             'class' => yii\grid\ActionColumn::class
         ]

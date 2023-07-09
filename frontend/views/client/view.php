@@ -12,7 +12,7 @@ $this->params['breadcrumbs'] = [
 
 ?>
 
-<h2>Клуб "<?=$model->name?>"</h2>
+<h2>Клиент "<?=$model->name?>"</h2>
 
 <?= RecordViewWidget::widget([
     'model' => $model,

@@ -4,7 +4,6 @@ use yii\bootstrap5\ActiveForm;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use kartik\date\DatePicker;
-use yii\bootstrap5\Html;
 use frontend\models\ClientSearch;
 use yii\data\ArrayDataProvider;
 
@@ -80,10 +79,17 @@ echo GridView::widget([
         'id',
         ['attribute' => 'name', 'label' => 'Имя'],
         ['attribute' => 'sex', 'label' => 'Пол'],
-        'birth_date:date',
-        'created_at:date',
         [
-            'attribute' => 'clubs',
+            'label' => 'Дата рождения',
+            'attribute' => 'birth_date',
+            'format' => ['datetime', 'php:Y-m-d H:i:s']
+        ],
+        [
+            'label' => 'Дата создания',
+            'attribute' => 'created_at',
+            'format' => ['datetime', 'php:Y-m-d H:i:s']
+        ],
+        [
             'label' => 'Клубы',
             'format' => 'html',
             'value' => function ($row) {
