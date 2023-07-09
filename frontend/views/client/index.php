@@ -73,7 +73,7 @@ echo GridView::widget([
         'pagination' => [
             'pageSize' => 10,
         ],
-        'sort' => ['attributes' => ['id','name', 'birth_date']]
+        'sort' => ['attributes' => ['id','name', 'birth_date', 'created_at']]
     ]),
     'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => ''],
     'columns' => [
@@ -83,6 +83,8 @@ echo GridView::widget([
         'birth_date:date',
         'created_at:date',
         [
+            'attribute' => 'clubs',
+            'label' => 'Клубы',
             'format' => 'html',
             'value' => function ($row) {
                 if (!empty($row['clubs'])) {

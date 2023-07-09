@@ -44,7 +44,7 @@ class GenerateTestDataController extends Controller
             $clubsCount = 30;
             for ($i = 0; $i < $clubsCount; $i++) {
                 $club = $clubs[] = [
-                    'name' => $faker->name,
+                    'name' => $faker->company,
                     'address' => $faker->address,
                     'created_at' => $creation = $faker->unixTime - $timeSpan,
                     'user_created_at' => $user->id,
@@ -68,7 +68,7 @@ class GenerateTestDataController extends Controller
                 shuffle($clubIds);
 
                 $client = $clients[] = [
-                    'name' => $faker->company,
+                    'name' => $faker->name,
                     'sex' => $faker->randomElement(['М', 'Ж']),
                     'birth_date' => $faker->date(),
                     'clubs' => join(',', array_slice($clubIds, 0, random_int(0, 5))),
