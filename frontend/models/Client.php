@@ -69,4 +69,31 @@ class Client extends Model
         return is_string($this->clubs) ? explode(',', $this->clubs) : $this->clubs;
     }
 
+    // коль не делалась 3-я сущность (производная таблица client_club),
+    // то присоединение данных по клубам клиентов делаем след. образом
+    public function attachClubsData($data): array {
+        $ids = [];
+        foreach ($data as $client) {
+            $ids = array_merge($ids, $client['clubs'] ? explode(',', $client['clubs']) : []);
+        }
+
+        $ids = array_unique($ids);
+
+        $clubs = Club::find()->where(['id' => $ids])
+            ->asArray()->indexBy('id')->all();
+
+        foreach ($data as $key => $client) {
+            $clientClubs = [];
+            $clientClubsArray = isset($client['clubs']) ? explode(',', $client['clubs']) : [];
+            foreach ($clientClubsArray as $clubId) {
+                if (isset($clubs[$clubId])) {
+                    $clientClubs[] = $clubs[$clubId];
+                }
+            }
+            $data[$key]['clubs'] = $clientClubs;
+        }
+
+        return $data;
+    }
+
 }

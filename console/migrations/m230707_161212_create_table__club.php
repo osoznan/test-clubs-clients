@@ -17,11 +17,11 @@ class m230707_161212_create_table__club extends Migration
             'name' => $this->string(100)->notNull()->unique(),
             'address' => $this->string(),
 
-            'created_at' => $this->timestamp()->notNull(),
+            'created_at' => $this->integer()->notNull(),
             'user_created_at' => $this->integer()->notNull(),
-            'updated_at' => $this->timestamp()->notNull(),
+            'updated_at' => $this->integer()->notNull(),
             'user_updated_at' => $this->integer()->notNull(),
-            'deleted_at' => $this->timestamp(),
+            'deleted_at' => $this->integer(),
             'user_deleted_at' => $this->integer(),
         ]);
 

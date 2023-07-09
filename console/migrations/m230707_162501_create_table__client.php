@@ -19,11 +19,11 @@ class m230707_162501_create_table__client extends Migration
             'birth_date' => $this->date(),
             'clubs' => $this->string()->notNull(),
 
-            'created_at' => $this->timestamp()->notNull(),
+            'created_at' => $this->integer()->notNull(),
             'user_created_at' => $this->integer()->notNull(),
-            'updated_at' => $this->timestamp()->notNull(),
+            'updated_at' => $this->integer()->notNull(),
             'user_updated_at' => $this->integer()->notNull(),
-            'deleted_at' => $this->timestamp(),
+            'deleted_at' => $this->integer(),
             'user_deleted_at' => $this->integer(),
         ]);
 

@@ -87,8 +87,10 @@ class GenerateTestDataController extends Controller
 
             $transaction->commit();
 
+            echo 'Данные сгенерированы успешно!';
+
         } catch (\Exception $e) {
-            echo $e->getTrace();
+            echo $e->getMessage();
             $transaction->rollBack();
         }
     }

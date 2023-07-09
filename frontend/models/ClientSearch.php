@@ -49,31 +49,4 @@ class ClientSearch extends Client
         return $data;
     }
 
-    // коль не делалась 3-я сущность (производная таблица client_club),
-    // то присоединим данные клубов клиентов таким образом
-    protected function attachClubsData($data): array {
-        $ids = [];
-        foreach ($data as $client) {
-            $ids = array_merge($ids, $client['clubs'] ? explode(',', $client['clubs']) : []);
-        }
-
-        $ids = array_unique($ids);
-
-        $clubs = Club::find()->where(['id' => $ids])
-            ->asArray()->indexBy('id')->all();
-
-        foreach ($data as $key => $client) {
-            $clientClubs = [];
-            $clientClubsArray = isset($client['clubs']) ? explode(',', $client['clubs']) : [];
-            foreach ($clientClubsArray as $clubId) {
-                if (isset($clubs[$clubId])) {
-                    $clientClubs[] = $clubs[$clubId];
-                }
-            }
-            $data[$key]['clubs'] = $clientClubs;
-        }
-
-        return $data;
-    }
-
 }

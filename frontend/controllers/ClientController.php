@@ -82,7 +82,7 @@ class ClientController extends Controller
         $model = Client::findOne($id);
 
         return $this->render('view', [
-            'model' => $model
+            'model' => $model->attachClubsData([$model])[0]
         ]);
     }
 
