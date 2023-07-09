@@ -101,3 +101,18 @@ a.desc:after {
 {
     text-decoration: none;
 }
+
+#client-clubs {
+    overflow-y: scroll;
+    max-height: 210px;
+}
+
+ul.pagination span, ul.pagination a {
+    margin: 7px;
+    padding: 5px;
+}
+
+ul.pagination li.active {
+    font-weight: bold;
+    font-size:18px;
+}

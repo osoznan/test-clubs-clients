@@ -15,7 +15,7 @@ $this->params['breadcrumbs'] = [
 ];
 
 ?>
-<a href="/club/create" class="btn btn-primary mb-3">Добавить</a>
+    <a href="/club/create" class="btn btn-primary mb-3">Добавить</a>
 <?php
 
 Pjax::begin(['id' => 'page_pjax']);
@@ -28,9 +28,6 @@ $form = ActiveForm::begin([
     <div class="row mb-3">
         <div class="col-4">
             <?= $form->field($model, 'name') ?>
-        </div>
-        <div class="col-4">
-            <?= $form->field($model, 'address') ?>
         </div>
         <div class="col-4">
             <?= $form->field($model, 'showDeleted')->checkbox() ?>
@@ -51,10 +48,20 @@ echo GridView::widget([
     ]),
     'columns' => [
         'id',
-        'name',
+        [
+            'attribute' => 'name',
+            'format' => 'html',
+            'value' => function ($model) {
+                return !$model->deleted_at ?
+                    $model['name'] : '<span class="bg-warning ml-3 p-1">Удалено</span> '
+                    . $model['name'];
+            }
+        ],
         'address',
         'created_at:date',
-        ['class' => 'yii\grid\ActionColumn']
+        [
+            'class' => yii\grid\ActionColumn::class
+        ]
     ],
 ]);
 
