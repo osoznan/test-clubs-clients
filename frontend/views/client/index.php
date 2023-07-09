@@ -95,7 +95,7 @@ echo GridView::widget([
             'value' => function ($row) {
                 if (!empty($row['clubs'])) {
                     return join(', ', array_map(function ($club) {
-                        return "<a href='client/view?id={$club['id']}'>{$club['name']}</a>";
+                        return "<a href='/client/view?id={$club['id']}'>{$club['name']}</a>";
                     }, $row['clubs']));
                 }
             }
