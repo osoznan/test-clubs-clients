@@ -9,6 +9,9 @@ use yii\db\ActiveRecord;
  */
 class Model extends ActiveRecord
 {
+    // данный сценарий убирает необходимость строгого соответствия ввода данных (нужно при фильтрации)
+    const SCENARIO_FILTER = 'filter';
+
     public function attributeLabels()
     {
         return [

@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use frontend\models\Client;
 use frontend\models\ClientSearch;
 use frontend\models\Club;
+use frontend\models\Model;
 use yii\helpers\Url;
 use yii\web\Controller;
 use yii\filters\AccessControl;
@@ -35,6 +36,7 @@ class ClientController extends Controller
     public function actionIndex()
     {
         $search = new ClientSearch();
+        $search->scenario = Model::SCENARIO_FILTER;
 
         if ($search->load(Yii::$app->request->get())) {
             $search->validate();

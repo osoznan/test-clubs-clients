@@ -20,11 +20,9 @@ class ClientSearch extends Client
     }
 
     public function rules(): array {
-        return [
-            ['name', 'trim'],
+        return array_merge(parent::rules(), [
             [['birthTo', 'birthFrom'], 'date', 'format' => 'php:Y-m-d'],
-            ['sex', 'safe']
-        ];
+        ]);
     }
 
     public function attributeLabels(): array {

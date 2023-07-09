@@ -20,10 +20,9 @@ class ClubSearch extends Club
     }
 
     public function rules(): array {
-        return [
-            [['name', 'address', 'showDeleted'], 'safe'],
-
-        ];
+        return array_merge(parent::rules(), [
+            ['showDeleted', 'safe']
+        ]);
     }
 
     public function attributeLabels(): array

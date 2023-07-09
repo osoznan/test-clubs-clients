@@ -33,9 +33,8 @@ class Client extends Model
         return array_merge(parent::rules(), [
             [['name', 'sex', 'birth_date', 'clubs'], 'safe'],
             ['name', 'unique'],
-            [['name', 'sex', 'birth_date'], 'required'],
-            //  ['name', 'regex', '\w+ \w+ \w*'],
-            ['name', 'string', 'min' => 3, 'max' => 100],
+            [['name', 'sex', 'birth_date'], 'required', 'except' => self::SCENARIO_FILTER],
+            ['name', 'string', 'min' => 3, 'max' => 100, 'except' => self::SCENARIO_FILTER],
             [['name', 'birth_date'], 'trim'],
             ['birth_date', 'date', 'format' => 'php:Y-m-d']
         ]);

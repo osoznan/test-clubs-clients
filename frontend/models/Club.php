@@ -3,7 +3,6 @@
 namespace frontend\models;
 
 use yii\behaviors\TimestampBehavior;
-use yii\db\ActiveRecord;
 
 /**
  * Club model
@@ -26,11 +25,11 @@ class Club extends Model
     public function rules(): array
     {
         return [
-            [['name', 'address'], 'safe'],
-            [['name', 'address'], 'required'],
-            ['name', 'string', 'min' => 2, 'max' => 100],
+            [['name', 'address'], 'safe', ],
+            [['name', 'address'], 'required', 'except' => self::SCENARIO_FILTER],
+            ['name', 'string', 'min' => 2, 'max' => 100, 'except' => self::SCENARIO_FILTER],
             [['name', 'address'], 'trim'],
-            ['name', 'unique'],
+            ['name', 'unique', 'except' => self::SCENARIO_FILTER],
             ['address', 'string', 'max' => 200]
         ];
     }

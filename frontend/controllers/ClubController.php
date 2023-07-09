@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use frontend\models\Model;
 use Yii;
 use yii\helpers\Url;
 use frontend\models\ClubSearch;
@@ -43,6 +44,7 @@ class ClubController extends Controller
     public function actionIndex()
     {
         $search = new ClubSearch();
+        $search->scenario = Model::SCENARIO_FILTER;
 
         if ($search->load(Yii::$app->request->get())) {
             $search->validate();
