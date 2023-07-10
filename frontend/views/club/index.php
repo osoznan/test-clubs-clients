@@ -44,7 +44,7 @@ echo GridView::widget([
         'pagination' => [
             'pageSize' => 10,
         ],
-        'sort' => []
+        'sort' => ['attributes' => ['name', 'created_at']]
     ]),
     'columns' => [
         'id',
@@ -60,10 +60,12 @@ echo GridView::widget([
         'address',
         [
             'attribute' => 'created_at',
-            'format' => ['datetime', 'php:Y-m-d H:i:s']
+            'format' => ['datetime', 'php:Y-m-d H:i:s'],
+            'contentOptions' => ['class' => 'text-center']
         ],
         [
-            'class' => yii\grid\ActionColumn::class
+            'class' => yii\grid\ActionColumn::class,
+            'contentOptions' => ['class' => 'text-center']
         ]
     ],
 ]);

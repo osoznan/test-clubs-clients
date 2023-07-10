@@ -116,3 +116,7 @@ ul.pagination li.active {
     font-weight: bold;
     font-size:18px;
 }
+
+.grid-view th {
+    text-align: center;
+}

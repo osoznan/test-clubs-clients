@@ -72,22 +72,24 @@ echo GridView::widget([
         'pagination' => [
             'pageSize' => 10,
         ],
-        'sort' => ['attributes' => ['id','name', 'sex', 'birth_date', 'created_at']]
+        'sort' => ['attributes' => ['id','name', 'sex', 'birth_date', 'created_at']],
     ]),
     'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => ''],
     'columns' => [
         'id',
         ['attribute' => 'name', 'label' => 'Имя'],
-        ['attribute' => 'sex', 'label' => 'Пол'],
+        ['attribute' => 'sex', 'label' => 'Пол', 'contentOptions' => ['class' => 'text-center']],
         [
             'label' => 'Дата рождения',
             'attribute' => 'birth_date',
-            'format' => ['datetime', 'php:Y-m-d H:i:s']
+            'format' => ['datetime', 'php:Y-m-d H:i:s'],
+            'contentOptions' => ['class' => 'text-center']
         ],
         [
             'label' => 'Дата создания',
             'attribute' => 'created_at',
-            'format' => ['datetime', 'php:Y-m-d H:i:s']
+            'format' => ['datetime', 'php:Y-m-d H:i:s'],
+            'contentOptions' => ['class' => 'text-center']
         ],
         [
             'label' => 'Клубы',
@@ -101,7 +103,10 @@ echo GridView::widget([
             }
 
         ],
-        ['class' => 'yii\grid\ActionColumn']
+        [
+            'class' => 'yii\grid\ActionColumn',
+            'contentOptions' => ['class' => 'text-center']
+        ]
     ],
 ]);
 
